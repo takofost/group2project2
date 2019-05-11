@@ -11,7 +11,7 @@ module.exports = function(app) {
     }
   });;
 
-  app.get("/list-items", function(req, res) {
+  app.get("/list-students", function(req, res) {
     res.render("search");
   });
 
@@ -23,9 +23,9 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/add-items", function(req, res) {
+  app.get("/add-student", function(req, res) {
     if (req.isAuthenticated()) {
-      res.render("add-items");
+      res.render("add-student");
     } else {
       res.redirect();;
     }

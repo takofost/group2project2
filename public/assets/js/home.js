@@ -16,7 +16,7 @@ $("#add-student").on("click", function(event) {
   event.preventDefault();
 
   $("#add-student").animateCss("pulse", function () {
-    window.location.href = "/add-students/new";;
+    window.location.href = "/add-student/new";;
   });
 });
 

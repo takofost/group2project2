@@ -3,20 +3,20 @@ var passport = require("passport");
 
 module.exports = function(app) {
   //Brings to add-items form.
-  app.get("/post-items/new", function(req, res) {
+  app.get("/add-student/new", function(req, res) {
     if (req.isAuthenticated()) {
       var user = {
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };;
-      res.render("add-items", user);
+      res.render("add-student", user);
     } else {
       res.redirect("/");;
     }
   });
 
   //Posting item to item table.
-  app.post("/post-items/new", function(req, res) {
+  app.post("add-student/new", function(req, res) {
     console.log(req.body);
     console.log("is logged in", req.isAuthenticated());;
     if (req.isAuthenticated()) {
@@ -24,7 +24,7 @@ module.exports = function(app) {
         id: req.session.passport.user,
         isloggedin: req.isAuthenticated()
       };;
-      db.Items.create({
+      db.student.create({
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         rank: req.body.rank,
@@ -36,40 +36,43 @@ module.exports = function(app) {
         zip: req.body.zip,
         email: req.body.email,
         phone: req.body.phone
-      }).then(function(dbItems) {
-        res.redirect("/add-students/new");
+      }).then(function(studentdb) {
+        res.redirect("/add-student/new");
       });
     } else {
       res.redirect("/");;
     }
   });
 
-  app.put("/add-students/update/:item_id", function(req, res) {
+  app.put("/add-student/update/:student_id", function(req, res) {
     if (req.isAuthenticated()) {
-      db.Items.update(
+      db.student.update(
         {
-          item_name: req.body.item_name,
-          description: req.body.description,
-          price: req.body.price,
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          rank: req.body.rank,
           start_date: req.body.start_date,
           end_date: req.body.end_date,
-          picture_link: req.body.picture_link,
-          owner_id: req.body.owner_id,
-          available: req.body.available
+          street: req.body.street,
+          city: req.body.city,
+          state: req.body.state,
+          zip: req.body.zip,
+          email: req.body.email,
+          phone: req.body.phone
         },
         {
           where: {
-            id: req.params.item_id
+            id: req.params.student_id
           }
         }
-      ).then(function(dbItems) {
+      ).then(function(studentdbs) {
         db.Transactions.create({
           start_date: req.body.start_date,
           end_date: req.body.end_date,
-          items_id: req.params.item_id,
-          renter_id: req.session.passport.user
+          student_id: req.params.student_id,
+          user_id: req.session.passport.user
         }).then(function () {
-          res.redirect("/post-items/new");
+          res.redirect("/add-student/new");
         });
       });
     } else {
@@ -79,7 +82,7 @@ module.exports = function(app) {
 
   //Update the item's desceription etc...
   app.get(
-    "/post-items/transactions/:account_id/:account_key/:item_id",
+    "/add-student/transactions/:account_id/:account_key/:student_id",
     function(req, res) {
       db.Accounts.findOne({
         where: {
@@ -107,10 +110,10 @@ module.exports = function(app) {
   );
 
   //Delete an item.
-  app.delete("/post-items/:item_id", function(req, res) {
-    db.Items.destroy({
+  app.delete("/add-student/:student_id", function(req, res) {
+    db.student.destroy({
       where: {
-        id: req.params.item_id
+        id: req.params.student_id
       }
     }).then(function(result) {
       if (result.affectedRows == 0) {

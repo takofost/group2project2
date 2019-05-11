@@ -89,19 +89,19 @@ module.exports = function(sequelize, DataTypes) {
     return bcrypt.compareSync(password, this.account_key);
   };
 
-  Accounts.associate = function(models){
-    Accounts.hasMany(models.Items, {
-      foreignKey: "owner_id",
-      onDelete: "cascade"
-    });
-  };
+  // Accounts.associate = function(models){
+  //   Accounts.hasMany(models.Items, {
+  //     foreignKey: "owner_id",
+  //     onDelete: "cascade"
+  //   });
 
-  Accounts.associate = function(models){
-    Accounts.hasMany(models.Transactions, {
-      foreignKey: "user_id"
-    });
-  };
+
+  // Accounts.associate = function(models){
+  //   Accounts.hasMany(models.Transactions, {
+  //     foreignKey: "user_id"
+  //   });
+  // };
 
   return Accounts;
 };
-;
+

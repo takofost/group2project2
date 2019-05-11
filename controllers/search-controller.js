@@ -5,16 +5,16 @@ var passport = require("passport");
 module.exports = function(app) {
   app.get("/search", function(req, res) {
     if(req.isAuthenticated()){
-      db.Items.findAll({}).then(function (dbItems) {
-        console.log("dbItems", dbItems);
+      db.student.findAll({}).then(function (studentdb) {
+        console.log("studentdb", studentdb);
 
         var hbsObj = {
-          items: [],
+          student: [],
           id: req.session.passport.user,
           isloggedin: req.isAuthenticated()
         };;
-        dbItems.forEach(function(item){
-          hbsObj.items.push(item.dataValues);
+        studentdb.forEach(function(student){
+          hbsObj.student.push(student.dataValues);
         });
 
         res.render("search", hbsObj);

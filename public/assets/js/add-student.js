@@ -4,7 +4,7 @@ $("#add-student").on("click", function(event) {
   addStudent();
   function addStudent() {
     // make a newAccount obj
-    var newItem = {
+    var newStudent = {
       first_name: $("#inputFirst")
         .val()
 ,
@@ -23,7 +23,7 @@ $("#add-student").on("click", function(event) {
       zip: $("#inputZip")
         .val()
 ,
-      role: $("#inputRole")
+      rank: $("#inputRank")
         .val()
 ,
       email: $("#inputEmail")
@@ -35,7 +35,7 @@ $("#add-student").on("click", function(event) {
     };
 
     // send an AJAX POST-request with jQuery
-    $.post("/add-students/new", newItem).then(function(data) {
+    $.post("/add-student/new", newStudent).then(function(data) {
       // log the data we found
       console.log(data);
       // tell the user we're adding a  with an alert window

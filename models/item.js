@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var Items = sequelize.define("Items", {
+  var student = sequelize.define("student", {
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -62,17 +62,17 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Items.associate = function(models) {
-    Items.belongsTo(models.Accounts, {
-      foreignKey: "owner_id"
-    });
-  };
+  // Items.associate = function(models) {
+  //   Items.belongsTo(models.Accounts, {
+  //     foreignKey: "owner_id"
+  //   });
+  // };
 
-  Items.associate = function(models) {
-    Items.hasMany(models.Transactions, {
-      foreignKey: "item_id"
-    });
-  };
+  // Items.associate = function(models) {
+  //   Items.hasMany(models.Transactions, {
+  //     foreignKey: "item_id"
+  //   });
+  // };
 
-  return Items;
+  return student;
 };
