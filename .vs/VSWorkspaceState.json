@@ -1,0 +1,15 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\config",
+    "\\controllers",
+    "\\db",
+    "\\models",
+    "\\public",
+    "\\public\\assets",
+    "\\public\\assets\\js",
+    "\\views"
+  ],
+  "SelectedNode": "\\controllers\\item-controller.js",
+  "PreviewInSolutionExplorer": false
+}
