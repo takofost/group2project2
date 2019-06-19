@@ -1,6 +1,6 @@
 # Dojo Roster App
 Dojo Roster App is a martial arts school management system still in it's enfancy.
-![Home page](./public/assets/images/DojoRosterApp.png)
+![Home page](./public/assets/images/DojoRosterApp.png);
 ## Curent functionality
 At this point our app allows:
  * users to create an account,
@@ -18,7 +18,7 @@ Dojo Roster App uses the following npm packages:
   * Connect-flash,
   * Cookie-parser, and
   * Express-session
-  ![npm packages used](./public/assets/images/technologies-used.png)
+  ![npm packages used](./public/assets/images/technologies-used.png);
 
 ## Future updates
   * Attendance tracking
